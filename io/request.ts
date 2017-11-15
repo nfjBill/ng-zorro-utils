@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import _ from 'lodash';
 
 import 'rxjs/add/operator/toPromise';
@@ -8,7 +8,7 @@ import 'rxjs/add/operator/toPromise';
 export class UtilsRequest {
   // private headers = new Headers({'Content-Type': 'application/json'});
 
-  constructor(private http: Http) {
+  constructor(private http: HttpClient) {
   }
 
   fix(url: string, options: any): Promise<any> {
@@ -24,6 +24,8 @@ export class UtilsRequest {
   }
 
   private performType(type: string, url: string, obj: any): Promise<any> {
+    url = _.trim(url);
+
     if (!obj.__dev.environment.production) {
       return this[type](url, obj);
     } else {
@@ -32,21 +34,21 @@ export class UtilsRequest {
   }
 
   private devFix(url: string): Promise<any> {
-    return this.getData(url)
+    return this.getData(url);
   }
 
   private devMultiple(url: string, obj: any): Promise<any> {
-    return this.getData(url + '/' + obj.__dev.id)
+    return this.getData(url + '/' + obj.__dev.id);
   }
 
   private devToggle(url: string, obj: any): Promise<any> {
-    return this.getData(`api/__Toggle/${Math.floor(Math.random() * 10) % 2}`)
+    return this.getData(`api/__Toggle/${Math.floor(Math.random() * 10) % 2}`);
   }
 
   private getData(url: string) {
     return this.http.get(url)
       .toPromise()
-      .then(response => _.omit(response.json().data, ['id']))
+      .then(response => _.omit(response, ['id']))
       .catch(this.handleError);
   }
 
@@ -55,7 +57,7 @@ export class UtilsRequest {
 
     return this.http.post(url, JSON.stringify(obj))
       .toPromise()
-      .then(response => response.json())
+      .then(response => response)
       .catch(this.handleError);
   }
 

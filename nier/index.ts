@@ -5,6 +5,7 @@ import {
   ActionReducer,
   MetaReducer,
 } from './store';
+import {getReducer} from './model';
 import {EffectsModule,Actions, Effect} from './effect';
 import {storeFreeze} from 'ngrx-store-freeze';
 import {storeLogger} from 'ngrx-store-logger';
@@ -22,17 +23,23 @@ export function logger(reducer: ActionReducer<any>): ActionReducer<any> {
   return storeLogger()(reducer);
 }
 
-export const reducer = {};
-export const effect = [];
+export const states = [];
+export const reducers = {};
+export const effects = [];
+export const KEYS = ['routerReducer'];
 
 export const metaReducers: MetaReducer<any>[] = [storeFreeze, logger];
 
 export function AddCore(core) {
-  if (core.reducer) {
-    reducer[core.KEY] = core.reducer;
+  if (core.KEY) {
+    KEYS.push(core.KEY);
+  }
+  if (core.reducers && core.initialState) {
+    states[core.KEY] = core.initialState;
+    reducers[core.KEY] = getReducer(core.reducers, core.initialState);;
   }
   if (core.Effects) {
-    effect.push(core.Effects);
+    effects.push(core.Effects);
   }
 }
 
@@ -55,6 +62,6 @@ export class CustomSerializer implements RouterStateSerializer<RouterStateUrl> {
   }
 }
 
-reducer['routerReducer'] = routerReducer;
+reducers[KEYS[0]] = routerReducer; //Push routerReducer in first KEYS
 
 export const routerProvide = {provide: RouterStateSerializer, useClass: CustomSerializer};

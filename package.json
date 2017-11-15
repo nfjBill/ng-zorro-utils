@@ -1,13 +1,31 @@
 {
-  "name": "ng-zorro-utils",
-  "version": "0.0.9",
-  "description": "",
-  "main": "index.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "_from": "ng-zorro-utils@^0.0.14",
+  "_id": "ng-zorro-utils@0.0.14",
+  "_inBundle": false,
+  "_integrity": "sha512-a7WRo94dBOndFUrU63DERWlc+W0Uf/xmKtUFjpUFUbYopcx/JaggbJ+psZkfH5HXAlUiS1p3+FlwPQ5WkgaoIg==",
+  "_location": "/ng-zorro-utils",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "ng-zorro-utils@^0.0.14",
+    "name": "ng-zorro-utils",
+    "escapedName": "ng-zorro-utils",
+    "rawSpec": "^0.0.14",
+    "saveSpec": null,
+    "fetchSpec": "^0.0.14"
   },
-  "author": "nfjbill",
-  "license": "MIT",
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/ng-zorro-utils/-/ng-zorro-utils-0.0.14.tgz",
+  "_shasum": "2c5f33ad7c52857009f762788ad5dc1823679a58",
+  "_spec": "ng-zorro-utils@^0.0.14",
+  "_where": "/Users/ningfujun/work/HK/develop/xisan-property",
+  "author": {
+    "name": "nfjbill"
+  },
+  "bundleDependencies": false,
   "dependencies": {
     "@ngrx/core": "^1.2.0",
     "@ngrx/effects": "^4.0.5",
@@ -17,5 +35,18 @@
     "lodash": "^4.17.4",
     "ngrx-store-freeze": "^0.2.0",
     "ngrx-store-logger": "^0.2.0"
-  }
+  },
+  "deprecated": false,
+  "description": "- 0.0.10 适配5.0",
+  "license": "MIT",
+  "main": "index.ts",
+  "name": "ng-zorro-utils",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nfjBill/ng-zorro-utils.git"
+  },
+  "version": "0.0.16"
 }
